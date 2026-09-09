@@ -6,7 +6,7 @@ const conexao = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : 'root',
-    database : 'db_saep'
+    database : 'saep_db'
 });
 
 // Realiza a conexão:
