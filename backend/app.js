@@ -15,3 +15,14 @@ const PORTA = 3035;
 server.listen(PORTA, () => {
     console.log(`Servidor rodando na porta ${PORTA}`);
 });
+
+// Define endpoints:
+server.get("/produtos", (req, res) => {
+    const sql = "SELECT * FROM Produto";
+    conexao.query(sql, (erro, resultado) => {
+        if(erro){
+            return res.status(500).json({ erro : erro.message });
+        }
+        return res.json(resultado);
+    });
+});
