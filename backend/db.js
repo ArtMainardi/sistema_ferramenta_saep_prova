@@ -17,3 +17,6 @@ conexao.connect((error) => {
     }
     console.log("Banco de Dados conectado com sucesso!!");
 });
+
+// Exporta a variável para outros arquivos JS:
+module.exports = conexao;
