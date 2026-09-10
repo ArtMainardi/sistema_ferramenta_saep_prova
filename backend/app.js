@@ -36,3 +36,13 @@ server.get("/produtos/:id", (req, res) => {
         return res.json(resultado[0]);
     });
 });
+server.get("/produtos/busca/:nome", (req, res) => {
+    const sql = "SELECT * FROM Produto WHERE nome_produto LIKE ?";
+    const termo = "%" + req.params.nome + "%";
+    conexao.query(sql, termo, (error, resultado) => {
+        if(error) {
+            return res.status(500).json({ erro : error.message });
+        }
+        return res.json(resultado);
+    });
+});
