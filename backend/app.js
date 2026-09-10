@@ -26,3 +26,13 @@ server.get("/produtos", (req, res) => {
         return res.json(resultado);
     });
 });
+server.get("/produtos/:id", (req, res) => {
+    const sql = "SELECT * FROM Produto WHERE id_produto = ?";
+    const { id } = req.params;
+    conexao.query(sql, [ id ], (error, resultado) => {
+        if(error){
+            return res.status(500).json({ erro : error.message });
+        }
+        return res.json(resultado[0]);
+    });
+});
